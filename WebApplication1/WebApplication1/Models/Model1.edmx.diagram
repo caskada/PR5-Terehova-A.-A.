@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8214629f35894ddfbc6635772bec5249" Name="Diagram1" ZoomLevel="57">
+        <EntityTypeShape EntityType="Model.Administrator" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Klienti" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Kompleksi" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Moderator" Width="1.5" PointX="9.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.sysdiagrams" Width="1.5" PointX="12.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Trener" Width="1.5" PointX="10.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Trenirovka" Width="1.5" PointX="7.5" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Zali" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Zapis__na_trenirovku" Width="1.5" PointX="12.75" PointY="3.875" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_Administrator_Kompleksi" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Administrator_Zali" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Zali_Administrator" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Trenirovka_Klienti" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Trenirovka_Kompleksi" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Moderator_Trenirovka" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Trenirovka_Moderator" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Zali_Moderator" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Zapis__na_trenirovku_Trener" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Trenirovka_Zali" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Trenirovka_Zapis__na_trenirovku" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Zapis__na_trenirovku_Trenirovka" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Administrator">
+    <Key>
+      <PropertyRef Name="ID_Administratora" />
+    </Key>
+    <Property Name="ID_Administratora" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_Zala" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_Kompleksa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Kompleksi" Relationship="Self.FK_Administrator_Kompleksi" FromRole="Administrator" ToRole="Kompleksi" />
+    <NavigationProperty Name="Zali" Relationship="Self.FK_Administrator_Zali" FromRole="Administrator" ToRole="Zali" />
+    <NavigationProperty Name="Zali1" Relationship="Self.FK_Zali_Administrator" FromRole="Administrator" ToRole="Zali" />
+  </EntityType>
+  <EntityType Name="Klienti">
+    <Key>
+      <PropertyRef Name="ID_Klienta" />
+    </Key>
+    <Property Name="ID_Klienta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LOGIN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PAROL_" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Autentifikacionnii_klych" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Trenirovka" Relationship="Self.FK_Trenirovka_Klienti" FromRole="Klienti" ToRole="Trenirovka" />
+  </EntityType>
+  <EntityType Name="Kompleksi">
+    <Key>
+      <PropertyRef Name="ID_Kompleksa" />
+    </Key>
+    <Property Name="ID_Kompleksa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Razpolojenie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Kolichestvo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Administrator" Relationship="Self.FK_Administrator_Kompleksi" FromRole="Kompleksi" ToRole="Administrator" />
+    <NavigationProperty Name="Trenirovka" Relationship="Self.FK_Trenirovka_Kompleksi" FromRole="Kompleksi" ToRole="Trenirovka" />
+  </EntityType>
+  <EntityType Name="Moderator">
+    <Key>
+      <PropertyRef Name="ID_Moderator" />
+    </Key>
+    <Property Name="ID_Moderator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_Trenirovka" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Trenirovka" Relationship="Self.FK_Moderator_Trenirovka" FromRole="Moderator" ToRole="Trenirovka" />
+    <NavigationProperty Name="Trenirovka1" Relationship="Self.FK_Trenirovka_Moderator" FromRole="Moderator" ToRole="Trenirovka" />
+    <NavigationProperty Name="Zali" Relationship="Self.FK_Zali_Moderator" FromRole="Moderator" ToRole="Zali" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Trener">
+    <Key>
+      <PropertyRef Name="ID_Trener" />
+    </Key>
+    <Property Name="ID_Trener" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Zapis__na_trenirovku" Relationship="Self.FK_Zapis__na_trenirovku_Trener" FromRole="Trener" ToRole="Zapis__na_trenirovku" />
+  </EntityType>
+  <EntityType Name="Trenirovka">
+    <Key>
+      <PropertyRef Name="ID_Trenirovka" />
+    </Key>
+    <Property Name="ID_Trenirovka" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_Klienta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_Zala" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_Kompleksa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_Zapis_" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_Moderator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Kolichestvo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Vremya" Type="Time" Nullable="false" Precision="7" />
+    <NavigationProperty Name="Klienti" Relationship="Self.FK_Trenirovka_Klienti" FromRole="Trenirovka" ToRole="Klienti" />
+    <NavigationProperty Name="Kompleksi" Relationship="Self.FK_Trenirovka_Kompleksi" FromRole="Trenirovka" ToRole="Kompleksi" />
+    <NavigationProperty Name="Moderator" Relationship="Self.FK_Moderator_Trenirovka" FromRole="Trenirovka" ToRole="Moderator" />
+    <NavigationProperty Name="Moderator1" Relationship="Self.FK_Trenirovka_Moderator" FromRole="Trenirovka" ToRole="Moderator" />
+    <NavigationProperty Name="Zali" Relationship="Self.FK_Trenirovka_Zali" FromRole="Trenirovka" ToRole="Zali" />
+    <NavigationProperty Name="Zapis__na_trenirovku" Relationship="Self.FK_Trenirovka_Zapis__na_trenirovku" FromRole="Trenirovka" ToRole="Zapis__na_trenirovku" />
+    <NavigationProperty Name="Zapis__na_trenirovku1" Relationship="Self.FK_Zapis__na_trenirovku_Trenirovka" FromRole="Trenirovka" ToRole="Zapis__na_trenirovku" />
+  </EntityType>
+  <EntityType Name="Zali">
+    <Key>
+      <PropertyRef Name="ID_Zala" />
+    </Key>
+    <Property Name="ID_Zala" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_Administrator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_Moderator" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Opisanie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Administrator" Relationship="Self.FK_Administrator_Zali" FromRole="Zali" ToRole="Administrator" />
+    <NavigationProperty Name="Administrator1" Relationship="Self.FK_Zali_Administrator" FromRole="Zali" ToRole="Administrator" />
+    <NavigationProperty Name="Moderator" Relationship="Self.FK_Zali_Moderator" FromRole="Zali" ToRole="Moderator" />
+    <NavigationProperty Name="Trenirovka" Relationship="Self.FK_Trenirovka_Zali" FromRole="Zali" ToRole="Trenirovka" />
+  </EntityType>
+  <EntityType Name="Zapis__na_trenirovku">
+    <Key>
+      <PropertyRef Name="ID_Zapis_" />
+    </Key>
+    <Property Name="ID_Zapis_" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_Trenirovka" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_Trener" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Vremya" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="data" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Trener" Relationship="Self.FK_Zapis__na_trenirovku_Trener" FromRole="Zapis__na_trenirovku" ToRole="Trener" />
+    <NavigationProperty Name="Trenirovka" Relationship="Self.FK_Trenirovka_Zapis__na_trenirovku" FromRole="Zapis__na_trenirovku" ToRole="Trenirovka" />
+    <NavigationProperty Name="Trenirovka1" Relationship="Self.FK_Zapis__na_trenirovku_Trenirovka" FromRole="Zapis__na_trenirovku" ToRole="Trenirovka" />
+  </EntityType>
+  <Association Name="FK_Administrator_Kompleksi">
+    <End Role="Kompleksi" Type="Self.Kompleksi" Multiplicity="1" />
+    <End Role="Administrator" Type="Self.Administrator" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kompleksi">
+        <PropertyRef Name="ID_Kompleksa" />
+      </Principal>
+      <Dependent Role="Administrator">
+        <PropertyRef Name="ID_Kompleksa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Administrator_Zali">
+    <End Role="Zali" Type="Self.Zali" Multiplicity="1" />
+    <End Role="Administrator" Type="Self.Administrator" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zali">
+        <PropertyRef Name="ID_Zala" />
+      </Principal>
+      <Dependent Role="Administrator">
+        <PropertyRef Name="ID_Zala" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zali_Administrator">
+    <End Role="Administrator" Type="Self.Administrator" Multiplicity="1" />
+    <End Role="Zali" Type="Self.Zali" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Administrator">
+        <PropertyRef Name="ID_Administratora" />
+      </Principal>
+      <Dependent Role="Zali">
+        <PropertyRef Name="ID_Administrator" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trenirovka_Klienti">
+    <End Role="Klienti" Type="Self.Klienti" Multiplicity="1" />
+    <End Role="Trenirovka" Type="Self.Trenirovka" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Klienti">
+        <PropertyRef Name="ID_Klienta" />
+      </Principal>
+      <Dependent Role="Trenirovka">
+        <PropertyRef Name="ID_Klienta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trenirovka_Kompleksi">
+    <End Role="Kompleksi" Type="Self.Kompleksi" Multiplicity="1" />
+    <End Role="Trenirovka" Type="Self.Trenirovka" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kompleksi">
+        <PropertyRef Name="ID_Kompleksa" />
+      </Principal>
+      <Dependent Role="Trenirovka">
+        <PropertyRef Name="ID_Kompleksa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Moderator_Trenirovka">
+    <End Role="Trenirovka" Type="Self.Trenirovka" Multiplicity="1" />
+    <End Role="Moderator" Type="Self.Moderator" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trenirovka">
+        <PropertyRef Name="ID_Trenirovka" />
+      </Principal>
+      <Dependent Role="Moderator">
+        <PropertyRef Name="ID_Trenirovka" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trenirovka_Moderator">
+    <End Role="Moderator" Type="Self.Moderator" Multiplicity="1" />
+    <End Role="Trenirovka" Type="Self.Trenirovka" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Moderator">
+        <PropertyRef Name="ID_Moderator" />
+      </Principal>
+      <Dependent Role="Trenirovka">
+        <PropertyRef Name="ID_Moderator" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zali_Moderator">
+    <End Role="Moderator" Type="Self.Moderator" Multiplicity="1" />
+    <End Role="Zali" Type="Self.Zali" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Moderator">
+        <PropertyRef Name="ID_Moderator" />
+      </Principal>
+      <Dependent Role="Zali">
+        <PropertyRef Name="ID_Moderator" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zapis__na_trenirovku_Trener">
+    <End Role="Trener" Type="Self.Trener" Multiplicity="1" />
+    <End Role="Zapis__na_trenirovku" Type="Self.Zapis__na_trenirovku" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trener">
+        <PropertyRef Name="ID_Trener" />
+      </Principal>
+      <Dependent Role="Zapis__na_trenirovku">
+        <PropertyRef Name="ID_Trener" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trenirovka_Zali">
+    <End Role="Zali" Type="Self.Zali" Multiplicity="1" />
+    <End Role="Trenirovka" Type="Self.Trenirovka" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zali">
+        <PropertyRef Name="ID_Zala" />
+      </Principal>
+      <Dependent Role="Trenirovka">
+        <PropertyRef Name="ID_Zala" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trenirovka_Zapis__na_trenirovku">
+    <End Role="Zapis__na_trenirovku" Type="Self.Zapis__na_trenirovku" Multiplicity="1" />
+    <End Role="Trenirovka" Type="Self.Trenirovka" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zapis__na_trenirovku">
+        <PropertyRef Name="ID_Zapis_" />
+      </Principal>
+      <Dependent Role="Trenirovka">
+        <PropertyRef Name="ID_Zapis_" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zapis__na_trenirovku_Trenirovka">
+    <End Role="Trenirovka" Type="Self.Trenirovka" Multiplicity="1" />
+    <End Role="Zapis__na_trenirovku" Type="Self.Zapis__na_trenirovku" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trenirovka">
+        <PropertyRef Name="ID_Trenirovka" />
+      </Principal>
+      <Dependent Role="Zapis__na_trenirovku">
+        <PropertyRef Name="ID_Trenirovka" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Sportivnii_kompleksEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Administrator" EntityType="Self.Administrator" />
+    <EntitySet Name="Klienti" EntityType="Self.Klienti" />
+    <EntitySet Name="Kompleksi" EntityType="Self.Kompleksi" />
+    <EntitySet Name="Moderator" EntityType="Self.Moderator" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Trener" EntityType="Self.Trener" />
+    <EntitySet Name="Trenirovka" EntityType="Self.Trenirovka" />
+    <EntitySet Name="Zali" EntityType="Self.Zali" />
+    <EntitySet Name="Zapis__na_trenirovku" EntityType="Self.Zapis__na_trenirovku" />
+    <AssociationSet Name="FK_Administrator_Kompleksi" Association="Self.FK_Administrator_Kompleksi">
+      <End Role="Kompleksi" EntitySet="Kompleksi" />
+      <End Role="Administrator" EntitySet="Administrator" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Administrator_Zali" Association="Self.FK_Administrator_Zali">
+      <End Role="Zali" EntitySet="Zali" />
+      <End Role="Administrator" EntitySet="Administrator" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zali_Administrator" Association="Self.FK_Zali_Administrator">
+      <End Role="Administrator" EntitySet="Administrator" />
+      <End Role="Zali" EntitySet="Zali" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trenirovka_Klienti" Association="Self.FK_Trenirovka_Klienti">
+      <End Role="Klienti" EntitySet="Klienti" />
+      <End Role="Trenirovka" EntitySet="Trenirovka" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trenirovka_Kompleksi" Association="Self.FK_Trenirovka_Kompleksi">
+      <End Role="Kompleksi" EntitySet="Kompleksi" />
+      <End Role="Trenirovka" EntitySet="Trenirovka" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Moderator_Trenirovka" Association="Self.FK_Moderator_Trenirovka">
+      <End Role="Trenirovka" EntitySet="Trenirovka" />
+      <End Role="Moderator" EntitySet="Moderator" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trenirovka_Moderator" Association="Self.FK_Trenirovka_Moderator">
+      <End Role="Moderator" EntitySet="Moderator" />
+      <End Role="Trenirovka" EntitySet="Trenirovka" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zali_Moderator" Association="Self.FK_Zali_Moderator">
+      <End Role="Moderator" EntitySet="Moderator" />
+      <End Role="Zali" EntitySet="Zali" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zapis__na_trenirovku_Trener" Association="Self.FK_Zapis__na_trenirovku_Trener">
+      <End Role="Trener" EntitySet="Trener" />
+      <End Role="Zapis__na_trenirovku" EntitySet="Zapis__na_trenirovku" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trenirovka_Zali" Association="Self.FK_Trenirovka_Zali">
+      <End Role="Zali" EntitySet="Zali" />
+      <End Role="Trenirovka" EntitySet="Trenirovka" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trenirovka_Zapis__na_trenirovku" Association="Self.FK_Trenirovka_Zapis__na_trenirovku">
+      <End Role="Zapis__na_trenirovku" EntitySet="Zapis__na_trenirovku" />
+      <End Role="Trenirovka" EntitySet="Trenirovka" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zapis__na_trenirovku_Trenirovka" Association="Self.FK_Zapis__na_trenirovku_Trenirovka">
+      <End Role="Trenirovka" EntitySet="Trenirovka" />
+      <End Role="Zapis__na_trenirovku" EntitySet="Zapis__na_trenirovku" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
